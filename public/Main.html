@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kelompok apa ada</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="angular.min.js"></script>
+    <link rel="icon" href="naruto.png">
+</head>
+<body>
+    <z id="myButton">
+        <i></i><i></i>
+        <span>Lesgoooo</span>
+    </z>
+    <div id="utama" class="hidden" ng-app="">
+        
+        <section>
+            <h2>Kelompok Apa ada</h2>
+            <div class="box">
+                <span></span>
+            </div>
+        </section>
+        <div class="container">
+            <div class="box1" style="--crl:#f00;" ng-init="nama ='Daniel Hartono' ; nim='535220206' ; hobi='Jalan Jalan' ; citaCita='Sukses aja' ; bp='Java' ">
+                <div class="clip">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="info">
+                    <p>Nama: {{ nama }}</p>
+                    <p>Nim: {{ nim }}</p>
+                    <p>Hobi: {{ hobi }}</p>
+                    <p>Cita-cita: {{ citaCita }}</p>
+                    <p>Bahasa Pemrograman: {{ bp }}</p>
+                </div>
+            </div>
+            <div class="box2" style="--crl:rgb(50, 14, 100); " ng-init="nama1 ='Adang Irawan' ; nim1='535220192' ; hobi1='Badminton' ; citaCita1='Menjadi Anime' ; bp1='Java' ">
+                <div class="clip">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="info">
+                    <p>Nama: {{ nama1 }}</p>
+                    <p>Nim: {{ nim1 }}</p>
+                    <p>Hobi: {{ hobi1 }}</p>
+                    <p>Cita-cita: {{ citaCita1 }}</p>
+                    <p>Bahasa Pemrograman: {{ bp1 }}</p>
+                </div>
+            </div>
+            <div class="box3" style="--crl:rgb(18, 226, 35); " ng-init="nama2 ='Amos Nababan' ; nim2='535220191' ; hobi2='Futsal' ; citaCita2='Pengusaha' ; bp2='Java' ">
+                <div class="clip">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="info">
+                    <p>Nama: {{ nama2 }}</p>
+                    <p>Nim: {{ nim2 }}</p>
+                    <p>Hobi: {{ hobi2 }}</p>
+                    <p>Cita-cita: {{ citaCita2 }}</p>
+                    <p>Bahasa Pemrograman: {{ bp2 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let bttn = document.querySelector('#myButton');
+        let main = document.querySelector('#utama');
+        let lineinter1;
+        let lineinter2;
+
+        bttn.addEventListener('mousemove', e => {
+            let rect = e.target.getBoundingClientRect();
+            let x = e.clientX * 2 - rect.right;
+            bttn.style.setProperty('--x', x + 'deg');
+        });
+        bttn.addEventListener('click', () => {
+            bttn.classList.add('hide');
+            main.classList.remove('hidden');
+
+            clearInterval(lineinter1);
+            clearInterval(lineinter2);
+        });
+
+        function rain(){
+            let amount = 200;
+            let body = document.querySelector('.hidden');
+            let b = 0;
+            while(b < amount){
+                let drop = document.createElement('b');
+
+                let size = Math.random() * 5;
+                let posX = Math.floor(Math.random() * window.innerWidth);
+                let delay = Math.random() * -20;
+                let durasi = Math.random() * 5;
+
+                drop.style.width = 0.2 + size+'px';
+                drop.style.left = posX + 'px';
+                drop.style.animationDelay = delay+'s';
+                drop.style.animationDuration = 1 + durasi+'s';
+                body.appendChild(drop);
+                b++;
+            }
+        }
+        rain();
+
+        /////////////////////////////
+        function lines1(){
+            let size1 = Math.random() * 12;
+            let durasi1 = Math.random() * 3;
+            let e = document.createElement('div');
+            e.setAttribute('class','circle1');
+            document.body.appendChild(e)
+            e.style.width = 2.5+size1+'px';
+            e.style.left = Math.random() * innerWidth + 'px';
+            e.style.animationDuration = 3 + durasi1+'s';
+            setTimeout(function(){
+                document.body.removeChild(e)
+            },5000);
+        }
+        lineinter1 = setInterval(function(){
+            lines1();
+        },200);
+        
+        function lines2(){
+            let size2 = Math.random() * 12;
+            let durasi2 = Math.random() * 3;
+            let f = document.createElement('div');
+            f.setAttribute('class','circle2');
+            document.body.appendChild(f)
+            f.style.width = 2.5+size2+'px';
+            f.style.left = Math.random() * innerWidth + 'px';
+            f.style.animationDuration = 3 + durasi2+'s';
+            setTimeout(function(){
+                document.body.removeChild(f)
+            },5000);
+        }
+        lineinter2 = setInterval(function(){
+            lines2();
+        },200);
+
+    </script>
+</body>
+</html>
